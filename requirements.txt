@@ -1,0 +1,6 @@
+playwright
+pytesseract
+Pillow
+requests
+python-dotenv
+pytest
