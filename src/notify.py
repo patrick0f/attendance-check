@@ -33,10 +33,10 @@ class Notifier:
             tags="green_circle",
         )
 
-    def send_reauth_needed(self):
+    def send_error(self, message: str):
         self._post(
-            "Panopto session expired. Please re-login via VNC.",
-            title="Attendance Check - Re-Auth Needed",
-            priority="urgent",
+            message,
+            title="Attendance Check - Error",
+            priority="high",
             tags="rotating_light",
         )

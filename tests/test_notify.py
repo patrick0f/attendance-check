@@ -23,14 +23,14 @@ class TestNotifier:
             args, kwargs = mock_post.call_args
             assert kwargs["headers"]["Priority"] == "default"
 
-    def test_send_reauth_needed(self):
+    def test_send_error(self):
         notifier = Notifier(topic="test-topic")
         with patch("src.notify.requests.post") as mock_post:
             mock_post.return_value = MagicMock(status_code=200)
-            notifier.send_reauth_needed()
+            notifier.send_error("Browser crashed")
             args, kwargs = mock_post.call_args
-            assert "re-auth" in kwargs["data"].lower() or "login" in kwargs["data"].lower()
-            assert kwargs["headers"]["Priority"] == "urgent"
+            assert kwargs["data"] == "Browser crashed"
+            assert kwargs["headers"]["Priority"] == "high"
 
     def test_send_alert_handles_network_error(self):
         notifier = Notifier(topic="test-topic")
