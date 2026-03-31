@@ -21,12 +21,15 @@ LOCKED_INDICATORS = [
     "this poll is locked",
     "responses are locked",
     "waiting for responses to open",
+    "\nlocked\n",
+    "\nlocked",
 ]
 
 UNLOCKED_INDICATORS = [
     "submit your response",
     "respond now",
     "type your answer",
+    "you may respond",
 ]
 
 
