@@ -15,6 +15,8 @@ NO_POLL_INDICATORS = [
     "activity not found",
     "waiting for the presenter",
     "no active activities",
+    "presentation to begin",
+    "presentation is underway",
 ]
 
 LOCKED_INDICATORS = [
@@ -29,7 +31,15 @@ UNLOCKED_INDICATORS = [
     "submit your response",
     "respond now",
     "type your answer",
+    "type your response",
     "you may respond",
+    "you can respond",
+    "tap to respond",
+    "click to respond",
+    "drag to rank",
+    "click on the image",
+    "submit",
+    "responding as",
 ]
 
 
@@ -100,7 +110,7 @@ class PollEvChecker:
             self._page.reload(wait_until="domcontentloaded", timeout=30000)
             self._page.wait_for_timeout(3000)
             text = self._page.inner_text("body")
-            logger.info("Page text (%d chars): %.200s", len(text), text)
+            logger.info("Page text (%d chars): %.500s", len(text), text)
             return parse_poll_state(text)
         except Exception:
             logger.exception("Error checking poll state")
